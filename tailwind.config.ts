@@ -57,6 +57,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        status: {
+          called: "hsl(var(--status-called))",
+          "called-foreground": "hsl(var(--status-called-foreground))",
+          waiting: "hsl(var(--status-waiting))",
+          "waiting-foreground": "hsl(var(--status-waiting-foreground))",
+          absent: "hsl(var(--status-absent))",
+          "absent-foreground": "hsl(var(--status-absent-foreground))",
+        },
+        display: {
+          header: "hsl(var(--header-bg))",
+          "header-foreground": "hsl(var(--header-fg))",
+          panel: "hsl(var(--panel-bg))",
+          "panel-foreground": "hsl(var(--panel-fg))",
+          footer: "hsl(var(--footer-bg))",
+          "footer-foreground": "hsl(var(--footer-fg))",
+          ad: "hsl(var(--ad-bg))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +97,21 @@ export default {
             height: "0",
           },
         },
+        "pulse-call": {
+          "0%, 100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+          "50%": {
+            opacity: "0.8",
+            transform: "scale(1.05)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-call": "pulse-call 1s ease-in-out 3",
       },
     },
   },

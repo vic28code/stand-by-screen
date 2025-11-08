@@ -38,6 +38,23 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
+    /* Queue status colors */
+    --status-called: 120 60% 50%;
+    --status-called-foreground: 0 0% 100%;
+    --status-waiting: 45 90% 60%;
+    --status-waiting-foreground: 222.2 84% 4.9%;
+    --status-absent: 0 70% 50%;
+    --status-absent-foreground: 0 0% 100%;
+
+    /* Display colors */
+    --header-bg: 240 10% 15%;
+    --header-fg: 0 0% 98%;
+    --panel-bg: 220 15% 95%;
+    --panel-fg: 222.2 84% 4.9%;
+    --footer-bg: 240 10% 40%;
+    --footer-fg: 0 0% 98%;
+    --ad-bg: 0 0% 98%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -91,6 +108,33 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Queue status colors - same in dark mode */
+    --status-called: 120 60% 50%;
+    --status-called-foreground: 0 0% 100%;
+    --status-waiting: 45 90% 60%;
+    --status-waiting-foreground: 222.2 84% 4.9%;
+    --status-absent: 0 70% 50%;
+    --status-absent-foreground: 0 0% 100%;
+
+    --header-bg: 240 10% 15%;
+    --header-fg: 0 0% 98%;
+    --panel-bg: 220 15% 20%;
+    --panel-fg: 0 0% 98%;
+    --footer-bg: 240 10% 40%;
+    --footer-fg: 0 0% 98%;
+    --ad-bg: 240 10% 10%;
+  }
+}
+
+@keyframes pulse-call {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
   }
 }
 
