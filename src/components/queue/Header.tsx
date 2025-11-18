@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface HeaderProps {
-  companyName?: string;
-  logoUrl?: string;
-}
-
-export const Header = ({ companyName = "Nombre de la empresa", logoUrl }: HeaderProps) => {
+export const Header = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -35,14 +30,12 @@ export const Header = ({ companyName = "Nombre de la empresa", logoUrl }: Header
   return (
     <header className="bg-display-header text-display-header-foreground px-6 py-4 flex items-center justify-between">
       <div className="flex items-center gap-4">
-        {logoUrl ? (
-          <img src={logoUrl} alt="Logo" className="h-12 w-12 object-contain" />
-        ) : (
-          <div className="h-12 w-12 bg-muted rounded flex items-center justify-center text-xs font-medium">
-            LOGO
-          </div>
-        )}
-        <h1 className="text-xl font-semibold">{companyName}</h1>
+        <img
+          src="/sacodito.png"
+          alt="Logo Sacode"
+          className="h-12 w-12 object-contain"
+        />
+        <h1 className="text-xl font-semibold">SACODE</h1>
       </div>
       <div className="flex items-center gap-3">
         <div className="bg-display-header-foreground/10 px-4 py-2 rounded">
