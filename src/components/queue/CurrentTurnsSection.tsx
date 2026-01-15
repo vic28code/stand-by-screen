@@ -5,7 +5,7 @@ import { TurnCard, TurnStatus } from "./TurnCard";
 export interface Turn {
   id: string;
   turnNumber: string;
-  categoria: string;
+  area: string;          // <--- CAMBIO: Antes era 'categoria'
   status: TurnStatus;
   timestamp?: Date;
 }
@@ -40,16 +40,7 @@ export const CurrentTurnsSection = ({ animatingTurnId }: CurrentTurnsSectionProp
         return;
       }
 
-      /*
-        Estados:
-        - en_atencion: activo/actual
-        - pendiente/esperando: próximo
-        - atendido: NO mostrar
-        - ausente: mostrar solo si lo necesitas en "absent"
-        Si fecha_finalizacion NO es null, el turno YA fue finalizado.
-      */
-
-      // Turnos actuales (solo los que están en atención SIN fecha_finalizacion)
+      // Turnos actuales
       const current = (data as any[])
         .filter(
           (row) =>
@@ -59,12 +50,12 @@ export const CurrentTurnsSection = ({ animatingTurnId }: CurrentTurnsSectionProp
         .map((row) => ({
           id: String(row.id),
           turnNumber: row.numero,
-          categoria: row.categorias?.nombre ?? "Sin área",
+          area: row.categorias?.nombre ?? "Sin área", // <--- CAMBIO: Asignamos a 'area'
           status: "called" as TurnStatus,
           timestamp: row.fecha_llamado ? new Date(row.fecha_llamado) : undefined,
         }));
 
-      // Turnos próximos (solo los pendientes SIN fecha_finalizacion, todavía no llamados)
+      // Turnos próximos
       const next = (data as any[])
         .filter(
           (row) =>
@@ -74,7 +65,7 @@ export const CurrentTurnsSection = ({ animatingTurnId }: CurrentTurnsSectionProp
         .map((row) => ({
           id: String(row.id),
           turnNumber: row.numero,
-          categoria: row.categorias?.nombre ?? "Sin área",
+          area: row.categorias?.nombre ?? "Sin área", // <--- CAMBIO: Asignamos a 'area'
           status: "waiting" as TurnStatus,
           timestamp: row.fecha_llamado ? new Date(row.fecha_llamado) : undefined,
         }))
@@ -103,7 +94,7 @@ export const CurrentTurnsSection = ({ animatingTurnId }: CurrentTurnsSectionProp
               <TurnCard
                 key={turn.id}
                 turnNumber={turn.turnNumber}
-                area={turn.categoria}
+                area={turn.area}  // <--- CAMBIO: Usamos turn.area
                 status={turn.status}
                 isAnimating={turn.id === animatingTurnId}
               />
@@ -119,7 +110,7 @@ export const CurrentTurnsSection = ({ animatingTurnId }: CurrentTurnsSectionProp
               <TurnCard
                 key={turn.id}
                 turnNumber={turn.turnNumber}
-                area={turn.categoria}
+                area={turn.area} // <--- CAMBIO: Usamos turn.area
                 status="waiting"
               />
             ))}
